@@ -64,6 +64,9 @@ BetweenRegex: !nestedRegex
 MonthWithYear: !nestedRegex
   def: \b(({WrittenMonthRegex}(\s*),?(\s+of)?(\s*)({YearRegex}|(?<order>next|last|this)\s+year))|(({YearRegex}|(?<order>next|last|this)\s+year)(\s*),?(\s*){WrittenMonthRegex}))\b
   references: [ WrittenMonthRegex, YearRegex ]
+StrictOneWordPeriodRegex: !nestedRegex
+  def: \b((((the\s+)?month of\s+)?(({RelativeRegex})\s+)?(?<month>April|Apr|August|Aug|December|Dec|February|Feb|January|Jan|July|Jul|June|Jun|March|Mar|May|November|Nov|October|Oct|September|Sep|Sept))|(month|year) to date|({StrictRelativeRegex}|my)\s+(weekend|week|month|year)|the\s+(weekend|week|month|year)\s+{AfterNextSuffixRegex})\b
+  references: [ RelativeRegex, AfterNextSuffixRegex, StrictRelativeRegex ]
 OneWordPeriodRegex: !nestedRegex
   def: \b((((the\s+)?month of\s+)?({RelativeRegex}\s+)?(?<month>April|Apr|August|Aug|December|Dec|February|Feb|January|Jan|July|Jul|June|Jun|March|Mar|May|November|Nov|October|Oct|September|Sep|Sept))|(month|year) to date|({RelativeRegex}\s+)?(my\s+)?(weekend|week|month|year)(\s+{AfterNextSuffixRegex})?)\b
   references: [ RelativeRegex, AfterNextSuffixRegex ]
@@ -156,8 +159,8 @@ NextDateRegex: !nestedRegex
   def: \b({NextPrefixRegex}(\s*week(\s*on)?)?\s+{WeekDayRegex})|((on\s+)?{WeekDayRegex}((\s+of)?\s+next\s*week))\b
   references: [ NextPrefixRegex, WeekDayRegex ]
 SpecialDayRegex: !nestedRegex
-  def: \b((the\s+)?day before yesterday|(the\s+)?day after (tomorrow|tmr)|((the\s+)?({RelativeRegex}|my)\s+day)|yesterday|tomorrow|tmr|today)\b
-  references: [ RelativeRegex]
+  def: \b((the\s+)?day before yesterday|(the\s+)?day after (tomorrow|tmr)|(((the\s+)?{StrictRelativeRegex}|my)\s+day)|yesterday|tomorrow|tmr|today)\b
+  references: [StrictRelativeRegex]
 SpecialDayWithNumRegex: !nestedRegex
   def: \b((?<number>{WrittenNumRegex})\s+days?\s+from\s+(?<day>yesterday|tomorrow|tmr|today))\b
   references: [ WrittenNumRegex ]

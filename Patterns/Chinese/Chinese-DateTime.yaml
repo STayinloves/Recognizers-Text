@@ -125,7 +125,7 @@ YearAndMonth: !nestedRegex
 PureNumYearAndMonth: !nestedRegex
   def: ({YearRegexInNumber}\s*[-\.\/]\s*{MonthNumRegex})|({MonthNumRegex}\s*\/\s*{YearRegexInNumber})
   references: [YearRegexInNumber, MonthNumRegex]
-OneWordPeriodRegex: !nestedRegex
+StrictOneWordPeriodRegex: !nestedRegex
   def: (((明年|今年|去年)\s*)?{MonthRegex}|({DatePeriodThisRegex}|{DatePeriodLastRegex}|{DatePeriodNextRegex})\s*(周末|周|月|年)|周末|今年|明年|去年|前年|后年)
   references: [MonthRegex, DatePeriodThisRegex, DatePeriodLastRegex, DatePeriodNextRegex]
 WeekOfMonthRegex: !nestedRegex

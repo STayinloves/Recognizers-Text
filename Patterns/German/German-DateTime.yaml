@@ -48,7 +48,7 @@ BetweenRegex: !nestedRegex
 MonthWithYear: !nestedRegex
   def: \b((?<month>april|apr\.|august|aug\.|dezember|dez\.|februar|feb\.|januar|jan\.|juli|jul\.|juni|jun\.|märz|mai|november|nov\.|oktober|okt\.|september|sep\.)(\s*),?(\s+des)?(\s*)({YearRegex}|(?<order>nächsten|letzten|diesen)\s+jahres))
   references: [ YearRegex ]
-OneWordPeriodRegex: !nestedRegex
+StrictOneWordPeriodRegex: !nestedRegex
   def: \b((((im\s+)?monat\s+)?({RelativeRegex}\s*(jahr\s*(im\s*)?)?)?(?<month>april|apr\.|august|aug\.|dezember|dez\.|februar|feb\.|januar|jan\.|juli|jul\.|juni|jun\.|märz|mai|november|nov\.|oktober|okt\.|september|sep\.))|({RelativeRegex}\s+)?(wochenende|woche|monat|jahr)|wochenende|(monat|jahr))\b
   references: [ RelativeRegex ]
 MonthNumWithYear: !nestedRegex
@@ -452,8 +452,8 @@ NumberEndingPattern: !nestedRegex
 OneOnOneRegex: !simpleRegex
   def: \b(1\s*:\s*1)|(one (on )?one|one\s*-\s*one|one\s*:\s*one)\b
 LaterEarlyPeriodRegex: !nestedRegex
-  def: \b((?<LatePrefix>spät(er|en|e)?)|(?<EarlyPrefix>früh(er|en|e)))\s+(?<suffix>{OneWordPeriodRegex})\b
-  references: [OneWordPeriodRegex]
+  def: \b((?<LatePrefix>spät(er|en|e)?)|(?<EarlyPrefix>früh(er|en|e)))\s+(?<suffix>{StrictOneWordPeriodRegex})\b
+  references: [StrictOneWordPeriodRegex]
 WeekWithWeekDayRangeRegex: !nestedRegex
   def: \b((?<week>({NextPrefixRegex}|{PastPrefixRegex}|diese(r|n|m))\s+woche)((\s+zwischen\s+{WeekDayRegex}\s+und\s+{WeekDayRegex})|(\s+vo(n|m)\s+{WeekDayRegex}\s+(bis\s+)?zum\s+{WeekDayRegex})))\b
   references: [NextPrefixRegex, PastPrefixRegex, WeekDayRegex]

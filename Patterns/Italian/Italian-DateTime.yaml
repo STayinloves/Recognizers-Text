@@ -46,7 +46,7 @@ BetweenRegex: !nestedRegex
 MonthWithYear: !nestedRegex
   def: \b((?<month>April|Apr|August|Aug|December|Dec|February|Feb|January|Jan|July|Jul|June|Jun|March|Mar|May|November|Nov|October|Oct|September|Sep|Sept),?(\s+of)?\s+({PeriodYearRegex}|(?<order>next|last|this)\s+year))
   references: [ PeriodYearRegex ]
-OneWordPeriodRegex: !nestedRegex
+StrictOneWordPeriodRegex: !nestedRegex
   def: \b((((the\s+)?month of\s+)?({RelativeRegex}\s+)?(?<month>April|Apr|August|Aug|December|Dec|February|Feb|January|Jan|July|Jul|June|Jun|March|Mar|May|November|Nov|October|Oct|September|Sep|Sept))|({RelativeRegex}\s+)?(weekend|week|month|year)|weekend|(month|year) to date)\b
   references: [ RelativeRegex ]
 MonthNumWithYear: !nestedRegex
