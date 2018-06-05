@@ -218,18 +218,16 @@ namespace Microsoft.Recognizers.Definitions.Chinese
 		public const string MoreOrEqualSuffix = @"(或|或者)\s*(以上|之上|更[大多高])";
 		public static readonly string LessOrEqual = $@"(({LessRegex}\s*(或|或者)?\s*{EqualRegex})|至多|最多|不{MoreRegex})";
 		public const string LessOrEqualSuffix = @"(或|或者)\s*(以下|之下|更[小少低])";
-		public static readonly string OneNumberRangeMoreRegex1 = $@"({MoreOrEqual}|{MoreRegex})\s*(?<number1>((?!([并且而並的同時时]|(，(?!\d+))|(,(?!\d+))|。)).)+)";
+		public static readonly string OneNumberRangeMoreRegex1 = $@"({MoreOrEqual}|{MoreRegex})\s*(?<number1>((?!([并且而並的同時时最多少]|(，(?!\d+))|(,(?!\d+))|。)).)+)";
 		public const string OneNumberRangeMoreRegex2 = @"比\s*(?<number1>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)\s*更?[大多高]";
 		public const string OneNumberRangeMoreRegex3 = @"(?<number1>((?!((，(?!\d+))|(,(?!\d+))|。|[或者])).)+)\s*(或|或者)?\s*([多几余幾餘]|以上|之上|更[大多高])(?![万亿萬億]{1,2})";
-		public static readonly string OneNumberRangeLessRegex1 = $@"({LessOrEqual}|{LessRegex})\s*(?<number2>((?!([并且而並的同時时]|(，(?!\d+))|(,(?!\d+))|。)).)+)";
+		public static readonly string OneNumberRangeLessRegex1 = $@"({LessOrEqual}|{LessRegex})\s*(?<number2>((?!([并且而並的同時时最多少]|(，(?!\d+))|(,(?!\d+))|。)).)+)";
 		public const string OneNumberRangeLessRegex2 = @"比\s*(?<number2>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)\s*更?[小少低]";
 		public const string OneNumberRangeLessRegex3 = @"(?<number2>((?!((，(?!\d+))|(,(?!\d+))|。|[或者])).)+)\s*(或|或者)?\s*(以下|之下|更[小少低])";
 		public const string OneNumberRangeMoreSeparateRegex = @"^[.]";
 		public const string OneNumberRangeLessSeparateRegex = @"^[.]";
 		public static readonly string OneNumberRangeEqualRegex = $@"{EqualRegex}\s*(?<number1>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)";
 		public static readonly string TwoNumberRangeRegex1 = $@"(位于|在|位於)\s*(?<number1>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)\s*(和|与|與|{TillRegex})\s*(?<number2>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)\s*(之间|之間)";
-		public static readonly string TwoNumberRangeRegex2 = $@"({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2}|{OneNumberRangeMoreRegex3})\s*(且|并且|而且|並且|((的)?同時)|((的)?同时)|，)?\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2}|{OneNumberRangeLessRegex3})";
-		public static readonly string TwoNumberRangeRegex3 = $@"({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2}|{OneNumberRangeLessRegex3})\s*(且|并且|而且|並且|((的)?同時)|((的)?同时)|，)?\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2}|{OneNumberRangeMoreRegex3})";
 		public static readonly string TwoNumberRangeRegex4 = $@"(?<number1>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)\s*{TillRegex}\s*(?<number2>((?!((，(?!\d+))|(,(?!\d+))|。)).)+)";
 	}
 }

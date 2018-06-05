@@ -163,12 +163,23 @@
   "NotSupported": "javascript, python",
   "Results": [
     {
-      "Text": "above 1000 and below 1500",
+      "Text": "above 1000",
+      "Start": 14,
+      "End": 23,
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "(1000,1500)"
+        "value": "(1000,)"
       }
-    }
+    },
+    {
+      "Text": "below 1500",
+      "Start": 29,
+      "End": 38,
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,1500)"
+      }
+    } 
   ]
 }
 ,
@@ -177,10 +188,21 @@
   "NotSupported": "javascript, python",
   "Results": [
     {
-      "Text": "above one quarter and below a half",
+      "Text": "above one quarter",
+      "Start": 14,
+      "End": 30,
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "(0.25,0.5)"
+        "value": "(0.25,)"
+      }
+    },
+    {
+      "Text": "below a half",
+      "Start": 36,
+      "End": 47,
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,0.5)"
       }
     }
   ]
@@ -433,20 +455,40 @@
 ,
 {
   "Input": "x is larger than 10 and smaller than 20. y is no more than 50 and no less than 20.",
-  "NotSupported": "javascript, python",
+  "NotSupported": "dotnet, javascript, python",
   "Results": [
     {
-      "Text": "larger than 10 and smaller than 20",
+      "Text": "larger than 10",
+      "Start": 5,
+      "End": 18,
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "(10,20)"
+        "value": "(10,)"
       }
     },
     {
-      "Text": "no more than 50 and no less than 20",
+      "Text": "smaller than 20",
+      "Start": 24,
+      "End": 38,
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "[20,50]"
+        "value": "(,20)"
+      }
+    },
+    {
+      "Text": "no more than 50",
+      "Start": 46,
+      "End": 60,
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,50]"
+      }
+    },
+    {
+      "Text": "no less than 20",
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "[20,50)"
       }
     }
   ]

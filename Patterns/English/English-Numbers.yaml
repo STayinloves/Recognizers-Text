@@ -181,12 +181,6 @@ OneNumberRangeEqualRegex: !nestedRegex
 TwoNumberRangeRegex1: !nestedRegex
   def: between\s*(the\s+)?(?<number1>({NumberSplitMark}.)+)\s*and\s*(the\s+)?(?<number2>({NumberSplitMark}.)+)
   references: [ NumberSplitMark ]
-TwoNumberRangeRegex2: !nestedRegex
-  def: ({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})\s*(and|but|,)\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})
-  references: [ OneNumberRangeMoreRegex1, OneNumberRangeMoreRegex2, OneNumberRangeLessRegex1, OneNumberRangeLessRegex2 ]
-TwoNumberRangeRegex3: !nestedRegex
-  def: ({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\s*(and|but|,)\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})
-  references: [ OneNumberRangeMoreRegex1, OneNumberRangeMoreRegex2, OneNumberRangeLessRegex1, OneNumberRangeLessRegex2 ]
 TwoNumberRangeRegex4: !nestedRegex
   def: (from\s+)?(?<number1>({NumberSplitMark}(?!\bfrom\b).)+)\s*{TillRegex}\s*(the\s+)?(?<number2>({NumberSplitMark}.)+)
   references: [ TillRegex, NumberSplitMark ]

@@ -21,16 +21,6 @@ namespace Microsoft.Recognizers.Text.Number.Chinese
                     , NumberRangeConstants.TWONUMBETWEEN
                 },
                 {
-                    // 大于...小于...
-                    new Regex(NumbersDefinitions.TwoNumberRangeRegex2, RegexOptions.IgnoreCase | RegexOptions.Singleline)
-                    , NumberRangeConstants.TWONUM
-                },
-                {
-                    // 小于...大于...
-                    new Regex(NumbersDefinitions.TwoNumberRangeRegex3, RegexOptions.IgnoreCase | RegexOptions.Singleline)
-                    , NumberRangeConstants.TWONUM
-                },
-                {
                     // ...到/至..., 20~30
                     new Regex(NumbersDefinitions.TwoNumberRangeRegex4, RegexOptions.IgnoreCase | RegexOptions.Singleline)
                     , NumberRangeConstants.TWONUMTILL

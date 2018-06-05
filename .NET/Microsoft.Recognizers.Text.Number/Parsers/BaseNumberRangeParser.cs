@@ -9,7 +9,7 @@ namespace Microsoft.Recognizers.Text.Number
 
         public BaseNumberRangeParser(INumberRangeParserConfiguration config)
         {
-            this.Config = config;
+            Config = config;
         }
 
         public virtual ParseResult Parse(ExtractResult extResult)
@@ -19,7 +19,8 @@ namespace Microsoft.Recognizers.Text.Number
             var type = extResult.Data as string;
             if (!string.IsNullOrEmpty(type))
             {
-                if (type.Contains(NumberRangeConstants.TWONUM))
+                if (type.Equals(NumberRangeConstants.TWONUMTILL) ||
+                    type.Equals(NumberRangeConstants.TWONUMBETWEEN))
                 {
                     ret = ParseNumberRangeWhichHasTwoNum(extResult);
                 }
@@ -74,55 +75,20 @@ namespace Microsoft.Recognizers.Text.Number
 
             char leftBracket, rightBracket;
             var type = extResult.Data as string;
-            if (type.Contains(NumberRangeConstants.TWONUMBETWEEN))
+            if (type.Equals(NumberRangeConstants.TWONUMBETWEEN))
             {
                 // between 20 and 30: (20,30)
                 leftBracket = NumberRangeConstants.LEFT_OPEN;
                 rightBracket = NumberRangeConstants.RIGHT_OPEN;
             }
-            else if (type.Contains(NumberRangeConstants.TWONUMTILL))
+            else
             {
                 // 20~30: [20,30)
                 leftBracket = NumberRangeConstants.LEFT_CLOSED;
                 rightBracket = NumberRangeConstants.RIGHT_OPEN;
             }
-            else
-            {
-                // check whether it contains string like "more or equal", "less or equal", "at least", etc.
-                var match = Config.MoreOrEqual.Match(extResult.Text);
 
-                if (!match.Success)
-                {
-                    match = Config.MoreOrEqualSuffix.Match(extResult.Text);
-                }
-
-                if (match.Success)
-                {
-                    leftBracket = NumberRangeConstants.LEFT_CLOSED;
-                }
-                else
-                {
-                    leftBracket = NumberRangeConstants.LEFT_OPEN;
-                }
-
-                match = Config.LessOrEqual.Match(extResult.Text);
-
-                if (!match.Success)
-                {
-                    match = Config.LessOrEqualSuffix.Match(extResult.Text);
-                }
-
-                if (match.Success)
-                {
-                    rightBracket = NumberRangeConstants.RIGHT_CLOSED;
-                }
-                else
-                {
-                    rightBracket = NumberRangeConstants.RIGHT_OPEN;
-                }
-            }
-
-            result.Value = new Dictionary<string, double>()
+            result.Value = new Dictionary<string, double>
             {
                 { "StartValue", startValue },
                 { "EndValue", endValue }
@@ -233,7 +199,7 @@ namespace Microsoft.Recognizers.Text.Number
                 startValueStr = Config.CultureInfo != null ? num[0].ToString(Config.CultureInfo) : num[0].ToString();
                 endValueStr = startValueStr;
 
-                result.Value = new Dictionary<string, double>()
+                result.Value = new Dictionary<string, double>
                 {
                     { "StartValue", num[0] },
                     { "EndValue", num[0] }

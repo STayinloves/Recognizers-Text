@@ -21,16 +21,6 @@ namespace Microsoft.Recognizers.Text.Number.Japanese
                     , NumberRangeConstants.TWONUMBETWEEN
                 },
                 {
-                    // より大きい...より小さい...
-                    new Regex(NumbersDefinitions.TwoNumberRangeRegex2, RegexOptions.IgnoreCase | RegexOptions.Singleline)
-                    , NumberRangeConstants.TWONUM
-                },
-                {
-                    // より小さい...より大きい...
-                    new Regex(NumbersDefinitions.TwoNumberRangeRegex3, RegexOptions.IgnoreCase | RegexOptions.Singleline)
-                    , NumberRangeConstants.TWONUM
-                },
-                {
                     // ...と/から..., 20~30
                     new Regex(NumbersDefinitions.TwoNumberRangeRegex4, RegexOptions.IgnoreCase | RegexOptions.Singleline)
                     , NumberRangeConstants.TWONUMTILL

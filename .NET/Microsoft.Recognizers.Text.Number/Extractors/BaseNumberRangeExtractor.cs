@@ -98,14 +98,14 @@ namespace Microsoft.Recognizers.Text.Number
             var numberStr1 = match.Groups["number1"].Value;
             var numberStr2 = match.Groups["number2"].Value;
 
-            if (type.Contains(NumberRangeConstants.TWONUM))
+            if (type.Equals(NumberRangeConstants.TWONUMTILL))
             {
                 var extractNumList1 = ExtractNumberAndOrdinalFromStr(numberStr1);
                 var extractNumList2 = ExtractNumberAndOrdinalFromStr(numberStr2);
 
                 if (extractNumList1 != null && extractNumList2 != null)
                 {
-                    if (type.Contains(NumberRangeConstants.TWONUMTILL))
+                    if (type.Equals(NumberRangeConstants.TWONUMTILL))
                     {
                         // num1 must have same type with num2
                         if (extractNumList1[0].Type != extractNumList2[0].Type)
@@ -215,7 +215,6 @@ namespace Microsoft.Recognizers.Text.Number
     public static class NumberRangeConstants
     {
         // Number range regex type
-        public const string TWONUM = "TwoNum";
         public const string TWONUMBETWEEN = "TwoNumBetween";
         public const string TWONUMTILL = "TwoNumTill";
         public const string MORE = "More";

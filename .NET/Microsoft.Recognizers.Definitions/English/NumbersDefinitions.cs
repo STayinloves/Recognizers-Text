@@ -86,8 +86,6 @@ namespace Microsoft.Recognizers.Definitions.English
 		public static readonly string OneNumberRangeLessSeparateRegex = $@"({EqualRegex}\s+(?<number1>({NumberSplitMark}.)+)(\s+or\s+){LessRegexNoNumberSucceed})|({LessRegex}\s+(?<number1>({NumberSplitMark}.)+)(\s+or\s+){EqualRegexNoNumberSucceed})";
 		public static readonly string OneNumberRangeEqualRegex = $@"{EqualRegex}\s*(the\s+)?(?<number1>({NumberSplitMark}.)+)";
 		public static readonly string TwoNumberRangeRegex1 = $@"between\s*(the\s+)?(?<number1>({NumberSplitMark}.)+)\s*and\s*(the\s+)?(?<number2>({NumberSplitMark}.)+)";
-		public static readonly string TwoNumberRangeRegex2 = $@"({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})\s*(and|but|,)\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})";
-		public static readonly string TwoNumberRangeRegex3 = $@"({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\s*(and|but|,)\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})";
 		public static readonly string TwoNumberRangeRegex4 = $@"(from\s+)?(?<number1>({NumberSplitMark}(?!\bfrom\b).)+)\s*{TillRegex}\s*(the\s+)?(?<number2>({NumberSplitMark}.)+)";
 		public const char DecimalSeparatorChar = '.';
 		public const string FractionMarkerToken = "over";

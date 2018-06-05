@@ -3,12 +3,23 @@
   "NotSupported": "javascript, python",
   "Results": [
     {
-      "Text": "大于二十的同时小于等于三十五",
+      "Text": "大于二十",
+      "Start": 4,
+      "End": 7,
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "(20,35]"
+        "value": "(20,)"
       }
-    }
+    },
+    {
+      "Text": "小于等于三十五",
+      "Start": 11,
+      "End": 17,
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,35]"
+      }
+    } 
   ]
 }
 ,
@@ -45,10 +56,21 @@
   "NotSupported": "javascript, python",
   "Results": [
     {
-      "Text": "大于100 并且小于300",
+      "Text": "大于100",
+      "Start": 4,
+      "End": 8,
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "(100,300)"
+        "value": "(100,)"
+      }
+    },
+    {
+      "Text": "小于300",
+      "Start": 12,
+      "End": 16,
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,300)"
       }
     }
   ]
@@ -56,13 +78,20 @@
 ,
 {
   "Input": "这是一个大于等于一百小于等于三百一的数",
-  "NotSupported": "javascript, python",
+  "NotSupported": "dotnet, javascript, python",
   "Results": [
     {
-      "Text": "大于等于一百小于等于三百一",
+      "Text": "大于等于一百",
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "[100,310]"
+        "value": "[100,)"
+      }
+    },
+    {
+      "Text": "小于等于三百一",
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,310]"
       }
     }
   ]
@@ -72,6 +101,13 @@
   "Input": "这些苹果最多100最少20个",
   "NotSupported": "javascript, python",
   "Results": [
+    {
+      "Text": "最多100最少20",
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "[20,100]"
+      }
+    },
     {
       "Text": "最多100最少20",
       "TypeName": "numberrange",
@@ -357,20 +393,34 @@
 ,
 {
   "Input": "x大于10小于20，  y不大于50不小于20",
-  "NotSupported": "javascript, python",
+  "NotSupported": "dotnet, javascript, python",
   "Results": [
     {
-      "Text": "大于10小于20",
+      "Text": "大于10",
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "(10,20)"
+        "value": "(10,)"
       }
     },
     {
-      "Text": "不大于50不小于20",
+      "Text": "小于20",
       "TypeName": "numberrange",
       "Resolution": {
-        "value": "[20,50]"
+        "value": "(,20)"
+      }
+    },
+    {
+      "Text": "不大于50",
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "(,50]"
+      }
+    },
+    {
+      "Text": "不小于20",
+      "TypeName": "numberrange",
+      "Resolution": {
+        "value": "[20,)"
       }
     }
   ]

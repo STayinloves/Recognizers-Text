@@ -21,16 +21,6 @@ namespace Microsoft.Recognizers.Text.Number.English
                     , NumberRangeConstants.TWONUMBETWEEN
                 },
                 {
-                    // more than ... less than ...
-                    new Regex(NumbersDefinitions.TwoNumberRangeRegex2, RegexOptions.IgnoreCase | RegexOptions.Singleline)
-                    , NumberRangeConstants.TWONUM
-                },
-                {
-                    // less than ... more than ...
-                    new Regex(NumbersDefinitions.TwoNumberRangeRegex3, RegexOptions.IgnoreCase | RegexOptions.Singleline)
-                    , NumberRangeConstants.TWONUM
-                },
-                {
                     // from ... to/~/- ...
                     new Regex(NumbersDefinitions.TwoNumberRangeRegex4, RegexOptions.IgnoreCase | RegexOptions.Singleline)
                     , NumberRangeConstants.TWONUMTILL
